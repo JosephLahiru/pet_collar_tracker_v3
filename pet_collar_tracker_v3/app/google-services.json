@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "383680205334",
+    "project_id": "petcollartracker-4af2b",
+    "storage_bucket": "petcollartracker-4af2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:383680205334:android:38053486f5c5eb64655b37",
+        "android_client_info": {
+          "package_name": "com.example.pet_collar_tracker_v3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "383680205334-nu9jdbd0g2tus9eouudd5l85eh7dtg2f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pet_collar_tracker_v3",
+            "certificate_hash": "5154f2b614273394379a431ca98517a1560f6209"
+          }
+        },
+        {
+          "client_id": "383680205334-4db898kp777jo6sp8s89s7rbrj819cc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmuIz4RdI9MLMOT0kjC2y4P3XRrkBBiQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "383680205334-4db898kp777jo6sp8s89s7rbrj819cc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
