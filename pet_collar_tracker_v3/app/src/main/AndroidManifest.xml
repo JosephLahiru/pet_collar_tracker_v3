@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_collar_tracker_v3">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".AdminPanel"
             android:exported="true" />
         <activity
             android:name=".HistoryLocationActivity"
@@ -31,7 +31,7 @@
         <activity android:name=".PastLocationsTableActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".PastLocationsActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -45,7 +45,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".AdminPanel"
+            android:name=".LoginActivity"
             android:label="Pet Collar Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
