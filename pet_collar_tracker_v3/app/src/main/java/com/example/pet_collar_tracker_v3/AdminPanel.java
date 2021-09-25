@@ -25,7 +25,7 @@ public class AdminPanel extends AppCompatActivity {
         setContentView(R.layout.activity_admin_panel);
 
         Button devManagementBtn = (Button)findViewById(R.id.deviceManagementButton);
-        //Button
+        Button locManagementBtn = (Button)findViewById(R.id.locationManagementButton);
 
         devManagementBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,11 +34,23 @@ public class AdminPanel extends AppCompatActivity {
             }
         });
 
+        locManagementBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchLocationManagerAct();
+            }
+        });
+
     }
 
     public void launchDeviceManagerAct(){
         Intent deviceManagementIntent = new Intent(this, DeviceManagementActivity.class);
         startActivity(deviceManagementIntent);
+    }
+
+    public void  launchLocationManagerAct(){
+        Intent locationManagementIntent = new Intent(this, LocationManagementActivity.class);
+        startActivity(locationManagementIntent);
     }
 
 }

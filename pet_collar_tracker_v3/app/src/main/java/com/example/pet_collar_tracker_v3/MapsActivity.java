@@ -6,20 +6,27 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Random;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -45,16 +52,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 try {
                     mMap.clear();
 
-                    Toast.makeText(MapsActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
+                    for(int i=0; i<dataSnapshot.getChildrenCount(); i++){
+                        String latitude = dataSnapshot.child("Dev"+i).child("latitude").getValue().toString();
+                        String longitude = dataSnapshot.child("Dev"+i).child("longitude").getValue().toString();
 
-//                    String latitude = dataSnapshot.child("latitude").getValue().toString();
-//                    String longitude = dataSnapshot.child("longitude").getValue().toString();
-//
-//                    LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-//
-//                    mMap.addMarker(new MarkerOptions().position(latLng).title("Live Location at : " + latitude + " , " + longitude));
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
+                        mMap.addMarker(new MarkerOptions()
+                                .position(latLng)
+                                .title("Device " + i + " : " + latitude + " , " + longitude)
+                                .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360))));
+                        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                    }
                 } catch (Exception e) {
                     Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }

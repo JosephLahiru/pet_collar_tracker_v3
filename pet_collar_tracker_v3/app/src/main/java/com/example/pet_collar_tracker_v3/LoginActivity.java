@@ -19,8 +19,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-<<<<<<< Updated upstream
-=======
+
         userName = findViewById(R.id.username_data);
         Pwd = findViewById(R.id.user_password);
         Login_btn = findViewById(R.id.sign_in_button);
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     }*/
             }
         });
->>>>>>> Stashed changes
+
     }
 
 
