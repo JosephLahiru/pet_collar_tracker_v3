@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity">
-
+    tools:context=".PastLocationsActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
@@ -15,13 +14,22 @@
         tools:context=".MapsActivity"
         tools:layout="@android:layout/simple_spinner_dropdown_item" />
 
+    <Button
+        android:id="@+id/showTableButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show\nTable"
+        android:layout_marginStart="318dp"
+        android:layout_marginTop="8dp"
+        />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/past_locations"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="95dp"
+        android:layout_marginStart="75dp"
         android:textSize="30sp"
         />
 

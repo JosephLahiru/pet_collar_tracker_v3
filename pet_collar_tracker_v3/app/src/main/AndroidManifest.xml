@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_collar_tracker_v3">
+        <activity android:name=".DeviceManagementActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".PastLocationsTableActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".PastLocationsActivity" />
         <activity android:name=".LoginActivity" />
@@ -33,7 +36,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".AdminPanel"
             android:label="Pet Collar Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
