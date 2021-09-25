@@ -17,6 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_collar_tracker_v3">
+        <activity android:name=".AdminPanel"></activity>
+        <activity android:name=".PastLocationsTableActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".PastLocationsActivity" />
         <activity android:name=".LoginActivity" />
