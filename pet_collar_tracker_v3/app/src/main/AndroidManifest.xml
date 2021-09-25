@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pet_collar_tracker_v3">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
             android:name=".HistoryLocationActivity"
             android:exported="true" />
         <activity

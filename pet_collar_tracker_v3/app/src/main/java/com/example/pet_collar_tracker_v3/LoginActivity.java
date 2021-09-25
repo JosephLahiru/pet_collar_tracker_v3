@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText userName, Pwd;
-    Button Login_btn;
+    EditText email, Pwd;
+    Button Login_btn, forgotPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +20,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        userName = findViewById(R.id.username_data);
-        Pwd = findViewById(R.id.user_password);
-        Login_btn = findViewById(R.id.sign_in_button);
+        email = findViewById(R.id.login_email);
+        Pwd = findViewById(R.id.login_password);
+        Login_btn = findViewById(R.id.loginButton);
+        forgotPwd = findViewById(R.id.forgotPwd);
 
 
         Login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userName.equals("") || Pwd.equals("")) {
+                if (email.equals("") || Pwd.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please enter values for all fields.", Toast.LENGTH_SHORT).show();
                 }
                 /*else {
