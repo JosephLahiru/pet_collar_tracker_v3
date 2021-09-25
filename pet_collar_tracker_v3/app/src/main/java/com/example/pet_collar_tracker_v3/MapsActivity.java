@@ -5,29 +5,21 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Arrays;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -53,13 +45,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 try {
                     mMap.clear();
 
-                    String latitude = dataSnapshot.child("latitude").getValue().toString();
-                    String longitude = dataSnapshot.child("longitude").getValue().toString();
+                    Toast.makeText(MapsActivity.this, dataSnapshot.toString(), Toast.LENGTH_SHORT).show();
 
-                    LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
-
-                    mMap.addMarker(new MarkerOptions().position(latLng).title("Live Location at : " + latitude + " , " + longitude));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+//                    String latitude = dataSnapshot.child("latitude").getValue().toString();
+//                    String longitude = dataSnapshot.child("longitude").getValue().toString();
+//
+//                    LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+//
+//                    mMap.addMarker(new MarkerOptions().position(latLng).title("Live Location at : " + latitude + " , " + longitude));
+//                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
                 } catch (Exception e) {
                     Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
