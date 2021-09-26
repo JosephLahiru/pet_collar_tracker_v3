@@ -5,16 +5,17 @@ import java.util.List;
 
 public class user {
 
-    public String usrName,deviceCode;
+    public String usrName,usrType;
     public List<String> deviceCodes = new ArrayList<>();
 
     public user(){
 
     }
 
-    public user(String usrName, String deviceCode){
+    public user(String usrName, String deviceCode , String usrType){
         this.usrName = usrName;
         this.deviceCodes.add(deviceCode);
+        this.usrType = usrType;
 
     }
 
