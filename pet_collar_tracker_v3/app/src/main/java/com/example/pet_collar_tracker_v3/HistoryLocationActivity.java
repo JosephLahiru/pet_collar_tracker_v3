@@ -3,6 +3,7 @@ package com.example.pet_collar_tracker_v3;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,68 +39,77 @@ public class HistoryLocationActivity extends FragmentActivity {
                     deviceIdButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
                             String deviceId = deviceIdEditTxt.getText().toString();
-                            if(Long.parseLong(deviceId) < dataSnapshot.getChildrenCount()){
-                                pastDataTxt.setText("RETRIEVE PAST DATA : Dev" + deviceId);
+                            boolean isNumber = TextUtils.isDigitsOnly(deviceId);
 
-                                //TODO fix the limitation error - if the count went higher than 4 - DONE
-                                //TODO limit input for only numbers
-                                //Toast.makeText(HistoryLocationActivity.this, Long.toString(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
+                            if(isNumber){
 
-                                String databaseLatitudeString = dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().length() - 1);
-                                String databaseLongitudeString = dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().length() - 1);
-                                String databaseTimeString = dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().length() - 1);
+                                if(Long.parseLong(deviceId) < dataSnapshot.getChildrenCount()){
+                                    pastDataTxt.setText("RETRIEVE PAST DATA : Dev" + deviceId);
 
-                                String[] stringLat = databaseLatitudeString.split(", ");
-                                Arrays.sort(stringLat);
+                                    //TODO fix the limitation error - if the count went higher than 4 - DONE
+                                    //TODO limit input for only numbers - DONE
+                                    //Toast.makeText(HistoryLocationActivity.this, Long.toString(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
 
-                                String[] stringLong = databaseLongitudeString.split(", ");
-                                Arrays.sort(stringLong);
+                                    String databaseLatitudeString = dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().length() - 1);
+                                    String databaseLongitudeString = dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().length() - 1);
+                                    String databaseTimeString = dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().length() - 1);
 
+                                    String[] stringLat = databaseLatitudeString.split(", ");
+                                    Arrays.sort(stringLat);
 
-                                String[] stringTime = databaseTimeString.split(", ");
-                                Arrays.sort(stringTime);
+                                    String[] stringLong = databaseLongitudeString.split(", ");
+                                    Arrays.sort(stringLong);
 
-                                String[] latitude = Arrays.copyOfRange(stringLat, stringLat.length - 25, stringLat.length - 1);
-                                String[] longitude = Arrays.copyOfRange(stringLong, stringLong.length - 25, stringLong.length - 1);
-                                String[] time = Arrays.copyOfRange(stringTime, stringTime.length - 25, stringTime.length - 1);
+                                    String[] stringTime = databaseTimeString.split(", ");
+                                    Arrays.sort(stringTime);
 
-                                TextView[] textArray = new TextView[latitude.length];
-                                TableRow[] tr_head = new TableRow[latitude.length];
+                                    String[] latitude = Arrays.copyOfRange(stringLat, stringLat.length - 25, stringLat.length - 1);
+                                    String[] longitude = Arrays.copyOfRange(stringLong, stringLong.length - 25, stringLong.length - 1);
+                                    String[] time = Arrays.copyOfRange(stringTime, stringTime.length - 25, stringTime.length - 1);
 
-                                cleanTable(tl);
+                                    TextView[] textArray = new TextView[latitude.length];
+                                    TableRow[] tr_head = new TableRow[latitude.length];
 
-                                for (int j = 0; j < latitude.length; j++) {
-                                    String curr_lat = latitude[j].split("=")[1];
-                                    String curr_long = longitude[j].split("=")[1];
-                                    String curr_time = time[j].split("=")[1];
+                                    cleanTable(tl);
 
-                                    String[] data = new String[]{"", curr_long, curr_lat, curr_time};
+                                    for (int j = 0; j < latitude.length; j++) {
+                                        String curr_lat = latitude[j].split("=")[1];
+                                        String curr_long = longitude[j].split("=")[1];
+                                        String curr_time = time[j].split("=")[1];
 
-                                    tr_head[j] = new TableRow(HistoryLocationActivity.this);
-                                    tr_head[j].setId(j + 1);
-                                    tr_head[j].setLayoutParams(new TableLayout.LayoutParams(
-                                            TableLayout.LayoutParams.MATCH_PARENT,
-                                            TableLayout.LayoutParams.WRAP_CONTENT
-                                    ));
+                                        String[] data = new String[]{"", curr_long, curr_lat, curr_time};
 
-                                    for (int h = 0; h < data.length; h++) {
-                                        textArray[h] = new TextView(HistoryLocationActivity.this);
-                                        textArray[h].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-                                        textArray[h].setId(j + 111 + h);
-                                        textArray[h].setText(data[h]);
-                                        //textArray[h].setWidth(120);
-                                        textArray[h].setTextSize(15);
-                                        tr_head[j].addView(textArray[h]);
+                                        tr_head[j] = new TableRow(HistoryLocationActivity.this);
+                                        tr_head[j].setId(j + 1);
+                                        tr_head[j].setLayoutParams(new TableLayout.LayoutParams(
+                                                TableLayout.LayoutParams.MATCH_PARENT,
+                                                TableLayout.LayoutParams.WRAP_CONTENT
+                                        ));
+
+                                        for (int h = 0; h < data.length; h++) {
+                                            textArray[h] = new TextView(HistoryLocationActivity.this);
+                                            textArray[h].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                                            textArray[h].setId(j + 111 + h);
+                                            textArray[h].setText(data[h]);
+                                            //textArray[h].setWidth(120);
+                                            textArray[h].setTextSize(15);
+                                            tr_head[j].addView(textArray[h]);
+                                        }
+
+                                        tl.addView(tr_head[j], new TableLayout.LayoutParams(
+                                                TableLayout.LayoutParams.MATCH_PARENT,
+                                                TableLayout.LayoutParams.WRAP_CONTENT
+                                        ));
                                     }
-
-                                    tl.addView(tr_head[j], new TableLayout.LayoutParams(
-                                            TableLayout.LayoutParams.MATCH_PARENT,
-                                            TableLayout.LayoutParams.WRAP_CONTENT
-                                    ));
+                                }else{
+                                    Toast.makeText(HistoryLocationActivity.this, "There are only " + dataSnapshot.getChildrenCount() + " devices in the system.\n Index starts from 0.", Toast.LENGTH_SHORT).show();
                                 }
-                            }else{
-                                Toast.makeText(HistoryLocationActivity.this, "There are only " + dataSnapshot.getChildrenCount() + " devices in the system.\n Index starts from 0.", Toast.LENGTH_SHORT).show();
+
+                            }
+                            else{
+                                Toast.makeText(HistoryLocationActivity.this, "Enter Integers only !!!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
