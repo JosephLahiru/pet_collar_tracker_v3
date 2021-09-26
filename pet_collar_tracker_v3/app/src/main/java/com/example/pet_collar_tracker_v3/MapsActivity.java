@@ -32,6 +32,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
+    int[] pointerColors = new int[]{72, 144, 216, 288, 359};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -61,7 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         mMap.addMarker(new MarkerOptions()
                                 .position(latLng)
                                 .title("Device " + i + " : " + latitude + " , " + longitude)
-                                .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360))));
+                                .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[i])));
                         //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
                     }
