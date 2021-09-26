@@ -40,4 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deviceLocationHistoryButton" />
 
+    <TextView
+        android:id="@+id/currentUserTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently logged as"
+        app:layout_constraintBottom_toTopOf="@+id/deviceLocationHistoryButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userPanelTextView"
+        android:textSize="20sp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

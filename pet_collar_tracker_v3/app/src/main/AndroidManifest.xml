@@ -24,7 +24,7 @@
             android:name=".UserDeviceLocationHistoryActivity"
             android:exported="true" />
         <activity
-            android:name=".UserPanelActivity"
+            android:name=".AdminPanel"
             android:exported="true" />
         <activity
             android:name=".SignUpActivity"
@@ -54,7 +54,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".AdminPanel"
+            android:name=".UserPanelActivity"
             android:label="Pet Collar Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
