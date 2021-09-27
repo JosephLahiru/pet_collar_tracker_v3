@@ -11,6 +11,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Random;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class UserDeviceCurrentLocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
@@ -38,7 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_user_device_current_location);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -47,6 +48,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
+        TextView liveLocationTextView = (TextView) findViewById(R.id.liveLocationTextView);
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("liveLocation");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -54,21 +57,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 try {
                     mMap.clear();
 
-                    for(int i=0; i<dataSnapshot.getChildrenCount(); i++){
-                        String latitude = dataSnapshot.child("Dev"+i).child("latitude").getValue().toString();
-                        String longitude = dataSnapshot.child("Dev"+i).child("longitude").getValue().toString();
+                    int i=0; //TODO Change the i with logged in user's Device ID
 
-                        LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+                    String latitude = dataSnapshot.child("Dev"+i).child("latitude").getValue().toString();
+                    String longitude = dataSnapshot.child("Dev"+i).child("longitude").getValue().toString();
 
-                        mMap.addMarker(new MarkerOptions()
-                                .position(latLng)
-                                .title("Device " + i + " : " + latitude + " , " + longitude)
-                                .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[i])));
-                        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                    LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
-                    }
+                    liveLocationTextView.setText("LIVE LOCATION : Dev" + i);
+
+                    mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title("Device " + i + " : " + latitude + " , " + longitude)
+                            .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[i])));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+
                 } catch (Exception e) {
-                    Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserDeviceCurrentLocationActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
 

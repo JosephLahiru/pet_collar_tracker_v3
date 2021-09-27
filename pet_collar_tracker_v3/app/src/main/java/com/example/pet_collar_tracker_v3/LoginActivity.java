@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         fieldEmail = findViewById(R.id.login_email);
         fieldPwd = findViewById(R.id.login_password);
         Login_btn = findViewById(R.id.loginButton);
@@ -61,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-<<<<<<< Updated upstream
+
                             //redirect to user profile
                             startActivity(new Intent(LoginActivity.this,AdminPanel.class));
-=======
+
                             Task<DataSnapshot> userType = mDb.child("Users").child(mAuth.getCurrentUser().getUid()).child("usrType").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -87,21 +86,19 @@ public class LoginActivity extends AppCompatActivity {
                             });
 
 
->>>>>>> Stashed changes
+
+                            if(email.split("@")[0].equals("admin")) {
+                                startActivity(new Intent(LoginActivity.this, AdminPanel.class));
+                            }
+                            else{
+                                startActivity(new Intent(LoginActivity.this, UserPanelActivity.class));
+                            }
                         }
                         else {
                             Toast.makeText(LoginActivity.this, "Login failed. Please check credentials!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-                /*else {
-                    Boolean checkUserPass = database.authUser(user, pass);
-                    if (checkUserPass) {
-                        Intent intent = new Intent(getApplicationContext(), chat.class);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(this, "Invalid credentials.", Toast.LENGTH_SHORT).show();
-                    }*/
             }
         });
 
