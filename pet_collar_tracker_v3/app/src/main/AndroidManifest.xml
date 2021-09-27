@@ -40,7 +40,7 @@
         <activity android:name=".PastLocationsTableActivity" />
         <activity android:name=".MapsActivity" />
         <activity android:name=".PastLocationsActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -55,6 +55,7 @@
 
         <activity
             android:name=".UserPanelActivity"
+            android:name=".LoginActivity"
             android:label="Pet Collar Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
