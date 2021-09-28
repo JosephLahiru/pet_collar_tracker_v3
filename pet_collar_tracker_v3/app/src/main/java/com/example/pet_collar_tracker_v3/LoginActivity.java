@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     EditText fieldEmail, fieldPwd;
@@ -52,57 +54,72 @@ public class LoginActivity extends AppCompatActivity {
                 if (email.equals("") || pwd.equals("")) {
                     Toast.makeText(LoginActivity.this, "Please enter values for all fields.", Toast.LENGTH_SHORT).show();
                 }
-                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                     Toast.makeText(LoginActivity.this, "Please enter valid email address.", Toast.LENGTH_SHORT).show();
                 }
-
-                mAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-
-                            //redirect to user profile
-                            startActivity(new Intent(LoginActivity.this,AdminPanel.class));
-
-                            Task<DataSnapshot> userType = mDb.child("Users").child(mAuth.getCurrentUser().getUid()).child("usrType").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                                    if(!task.isSuccessful()){
-                                        Log.e("firebase", "Error getting data", task.getException());
-                                    }
-                                    else {
-                                        Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                                        Log.d("firebase","Success!");
-
-
-                                        if(String.valueOf(task.getResult().getValue()).equals("admin")) {
-                                            startActivity(new Intent(LoginActivity.this, AdminPanel.class));
+                else{
+                    mAuth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Task<DataSnapshot> userType = mDb.child("Users").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("usrType").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                        if(!task.isSuccessful()){
+                                            Log.e("firebase", "Error getting data", task.getException());
                                         }
-                                        else{
-                                            startActivity(new Intent(LoginActivity.this, UserPanelActivity.class));
+                                        else {
+                                            Log.d("firebase", String.valueOf(Objects.requireNonNull(task.getResult()).getValue()));
+                                            Log.d("firebase","Success!");
+
+                                            if(String.valueOf(task.getResult().getValue()).equals("admin")) {
+                                                startActivity(new Intent(LoginActivity.this, AdminPanel.class));
+                                            }
+                                            else{
+                                                Intent userPanelIntent = new Intent(LoginActivity.this, UserPanelActivity.class);
+
+                                                mDb.child("Users").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("usrName").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                                        if (!task.isSuccessful()) {
+                                                            Log.e("firebase", "Error getting data", task.getException());
+                                                            Toast.makeText(LoginActivity.this, "Please Check your Internet Connectivity.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                        else {
+                                                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                                                            userPanelIntent.putExtra("userName", String.valueOf(task.getResult().getValue()));
+                                                            //startActivity(userPanelIntent);
+                                                        }
+                                                    }
+                                                });
+                                                mDb.child("Users").child(Objects.requireNonNull(mAuth.getCurrentUser()).getUid()).child("deviceCodes").child("0").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                                        if (!task.isSuccessful()) {
+                                                            Log.e("firebase", "Error getting data", task.getException());
+                                                            Toast.makeText(LoginActivity.this, "Please Check your Internet Connectivity.", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                        else {
+                                                            Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                                                            userPanelIntent.putExtra("deviceCodes", String.valueOf(task.getResult().getValue()));
+                                                            startActivity(userPanelIntent);
+                                                        }
+                                                    }
+                                                });
+                                                //userPanelIntent.putExtra("deviceCodes",mDb.child("Users").child(mAuth.getCurrentUser().getUid()).child("deviceCodes").child("0").get().toString());
+                                                //TODO send user data to the other side - DONE
+                                            }
                                         }
                                     }
-                                }
-                            });
-
-
-
-                            if(email.split("@")[0].equals("admin")) {
-                                startActivity(new Intent(LoginActivity.this, AdminPanel.class));
+                                });
                             }
-                            else{
-                                startActivity(new Intent(LoginActivity.this, UserPanelActivity.class));
+                            else {
+                                Toast.makeText(LoginActivity.this, "Login failed. Please check credentials!", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        else {
-                            Toast.makeText(LoginActivity.this, "Login failed. Please check credentials!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
             }
         });
-
     }
-
-
 }

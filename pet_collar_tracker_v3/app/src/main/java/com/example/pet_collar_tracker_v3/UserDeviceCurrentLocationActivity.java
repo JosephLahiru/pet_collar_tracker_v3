@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -46,6 +47,9 @@ public class UserDeviceCurrentLocationActivity extends FragmentActivity implemen
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
+        Intent intent  = getIntent();
+        String devID = intent.getStringExtra("deviceCodes");
+
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         TextView liveLocationTextView = (TextView) findViewById(R.id.liveLocationTextView);
@@ -59,17 +63,17 @@ public class UserDeviceCurrentLocationActivity extends FragmentActivity implemen
 
                     int i=0; //TODO Change the i with logged in user's Device ID
 
-                    String latitude = dataSnapshot.child("Dev"+i).child("latitude").getValue().toString();
-                    String longitude = dataSnapshot.child("Dev"+i).child("longitude").getValue().toString();
+                    String latitude = dataSnapshot.child(devID).child("latitude").getValue().toString();
+                    String longitude = dataSnapshot.child(devID).child("longitude").getValue().toString();
 
                     LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
-                    liveLocationTextView.setText("LIVE LOCATION : Dev" + i);
+                    liveLocationTextView.setText("LIVE LOCATION : " + devID);
 
                     mMap.addMarker(new MarkerOptions()
                             .position(latLng)
-                            .title("Device " + i + " : " + latitude + " , " + longitude)
-                            .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[i])));
+                            .title("Device " + devID + " : " + latitude + " , " + longitude)
+                            .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[Integer.parseInt(devID.split("v")[1])])));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
 
                 } catch (Exception e) {
