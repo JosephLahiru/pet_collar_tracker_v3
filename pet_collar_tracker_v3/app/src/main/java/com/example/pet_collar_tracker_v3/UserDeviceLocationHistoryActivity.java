@@ -2,6 +2,8 @@ package com.example.pet_collar_tracker_v3;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,7 +30,10 @@ public class UserDeviceLocationHistoryActivity extends FragmentActivity {
         TableLayout tl = (TableLayout) findViewById(R.id.tableLayout4);
         TextView pastDataTxt = (TextView) findViewById(R.id.retrieveUserDataTextView);
 
-        int deviceId = 0;
+        Intent intent  = getIntent();
+        String devID = intent.getStringExtra("deviceCodes");
+
+        int deviceId = Integer.parseInt(devID.split("v")[1]);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Location");
         databaseReference.addValueEventListener(new ValueEventListener() {
