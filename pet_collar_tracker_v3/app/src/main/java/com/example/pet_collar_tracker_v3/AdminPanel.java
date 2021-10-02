@@ -26,6 +26,14 @@ public class AdminPanel extends AppCompatActivity {
 
         Button devManagementBtn = (Button)findViewById(R.id.deviceManagementButton);
         Button locManagementBtn = (Button)findViewById(R.id.locationManagementButton);
+        Button usrManagementBtn = (Button)findViewById(R.id.admin_usrManagementBtn);
+
+        usrManagementBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminPanel.this, UserManagement.class));
+            }
+        });
 
         devManagementBtn.setOnClickListener(new View.OnClickListener() {
             @Override

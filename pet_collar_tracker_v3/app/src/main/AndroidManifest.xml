@@ -20,6 +20,15 @@
         android:theme="@style/Theme.Pet_collar_tracker_v3">
         <activity
             android:name=".LoginActivity"
+            />
+        <activity
+            android:name=".UserDetailsEditActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".UserManagement"
             android:exported="true" />
         <activity
             android:name=".UserDeviceCurrentLocationActivity"
