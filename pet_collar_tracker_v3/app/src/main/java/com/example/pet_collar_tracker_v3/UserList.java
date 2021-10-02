@@ -8,6 +8,15 @@ public class UserList {
     String usrName;
     List <String> deviceCodes;
     String usrType;
+    String usrID;
+
+    public void setUsrID(String usrID) {
+        this.usrID = usrID;
+    }
+
+    public String getUsrID() {
+        return usrID;
+    }
 
     public String getUsrType() {
         return usrType;

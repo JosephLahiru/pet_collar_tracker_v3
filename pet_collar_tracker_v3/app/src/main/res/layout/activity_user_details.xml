@@ -92,10 +92,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/usrDetails_EditBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit User Details"
         android:layout_below="@id/usrDetails"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:text="Edit User Details" />
 </RelativeLayout>

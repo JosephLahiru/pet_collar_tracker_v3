@@ -45,12 +45,17 @@ public class UserManagement extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     UserList userList = dataSnapshot.getValue(UserList.class);
+                    String usrID = dataSnapshot.getKey();
+                    userList.setUsrID(usrID);
+                    Log.d("firebase", String.valueOf(Objects.requireNonNull(usrID)));
                     if (userList.getUsrType().equals("admin")){
                         Log.d("firebase", String.valueOf(Objects.requireNonNull(dataSnapshot.getValue())));
                     }
                     else {
                         Log.d("firebase", String.valueOf(Objects.requireNonNull(dataSnapshot.getValue())));
                         list.add(userList);
+
+
                     }
                 }
 
