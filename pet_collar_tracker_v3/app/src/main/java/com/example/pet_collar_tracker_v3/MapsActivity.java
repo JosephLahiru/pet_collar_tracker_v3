@@ -34,6 +34,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     int[] pointerColors = new int[]{72, 144, 216, 288, 359};
 
+    DatabaseReference pingRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -45,9 +47,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
+        pingRef = FirebaseDatabase.getInstance().getReference().child("liveLocation").child("Dev0").child("ping");
+
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("liveLocation");
+        pingRef.push().setValue(new Random().nextInt(100));
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -64,7 +70,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                 .position(latLng)
                                 .title("Device " + i + " : " + latitude + " , " + longitude)
                                 .icon(BitmapDescriptorFactory.defaultMarker(pointerColors[i])));
-                        //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(7.8731, 80.7718)));
 
                     }
                 } catch (Exception e) {

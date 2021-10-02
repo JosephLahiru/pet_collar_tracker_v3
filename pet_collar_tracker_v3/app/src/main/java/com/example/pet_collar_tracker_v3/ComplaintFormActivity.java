@@ -48,6 +48,11 @@ public class ComplaintFormActivity extends AppCompatActivity {
                 dbRef.push().setValue(complains);
 
                 Toast.makeText(ComplaintFormActivity.this, "Complain submission success.", Toast.LENGTH_SHORT).show();
+                nameEditTxt.getText().clear();
+                deviceNoEditTxt.getText().clear();
+                contactNoEditTxt.getText().clear();
+                emailEditTxt.getText().clear();
+                issueEditText.getText().clear();
             }
         });
     }
