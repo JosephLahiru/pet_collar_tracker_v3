@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".WelcomePageActivity">
 
+
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
@@ -29,4 +31,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="100dp"
         />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="A healthy pet is a happy pet.\nWith location and activity tracking,\n these wearable trackers and collars can help make sure\n your dog or cat is both safe and healthy.\nFind out which one is right for your furry companion."
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="161dp"
+        android:layout_height="178dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/b" />
 </androidx.constraintlayout.widget.ConstraintLayout>
