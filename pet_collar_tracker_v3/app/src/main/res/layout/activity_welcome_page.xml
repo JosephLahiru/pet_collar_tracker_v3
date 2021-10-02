@@ -14,11 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:text="LOGIN"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/exitButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="80dp"
         />
 
     <Button
@@ -27,32 +27,34 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:text="EXIT"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="100dp"
+        android:layout_marginTop="80dp"
         />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="A healthy pet is a happy pet.\nWith location and activity tracking,\n these wearable trackers and collars can help make sure\n your dog or cat is both safe and healthy.\nFind out which one is right for your furry companion."
+        android:text="@string/a_healthy_pet_is_a_happy_pet_nwith_location_and_activity_tracking_n_these_wearable_trackers_and_collars_can_help_make_sure_n_your_dog_or_cat_is_both_safe_and_healthy_nfind_out_which_one_is_right_for_your_furry_companion"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:layout_editor_absoluteX="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="60sp"
         />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="161dp"
         android:layout_height="178dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/b" />
+        app:srcCompat="@mipmap/b"
+        android:layout_marginTop="40dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

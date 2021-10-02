@@ -18,6 +18,7 @@ public class UserPanelActivity extends AppCompatActivity {
 
         Button userDeviceLocationHistoryBtn = (Button) findViewById(R.id.deviceLocationHistoryButton);
         Button userDeviceCurrentLocationBtn = (Button) findViewById(R.id.deviceCurrentLocationButton);
+        Button userComplaintFormButton = (Button) findViewById(R.id.complaintFormButton);
         TextView currentUserTextView = (TextView) findViewById(R.id.currentUserTextView);
 
         Intent intent  = getIntent();
@@ -39,6 +40,14 @@ public class UserPanelActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchUserDeviceCurrentLocationActivity(devID);
+            }
+        });
+
+        userComplaintFormButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent userComplaintIntent = new Intent(UserPanelActivity.this, ComplaintFormActivity.class);
+                startActivity(userComplaintIntent);
             }
         });
     }

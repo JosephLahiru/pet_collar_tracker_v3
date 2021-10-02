@@ -3,4 +3,6 @@
     <string name="title_activity_maps">Map</string>
     <string name="live_location">LIVE LOCATION</string>
     <string name="past_locations">PAST LOCATIONS</string>
+    <string name="complaint_form">COMPLAINT FORM</string>
+    <string name="a_healthy_pet_is_a_happy_pet_nwith_location_and_activity_tracking_n_these_wearable_trackers_and_collars_can_help_make_sure_n_your_dog_or_cat_is_both_safe_and_healthy_nfind_out_which_one_is_right_for_your_furry_companion">A healthy pet is a happy pet.\nWith location and activity tracking,\n these wearable trackers and collars can help make sure\n your dog or cat is both safe and healthy.\nFind out which one is right for your furry companion.</string>
 </resources>
