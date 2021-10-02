@@ -1,7 +1,10 @@
 package com.example.pet_collar_tracker_v3;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,13 +37,26 @@ public class UserList_Adaptor extends RecyclerView.Adapter<UserList_Adaptor.User
     }
 
     @Override
-    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull UserViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         UserList user = list.get(position);
 
         try {
+            holder.viewUserParent.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context,UserDetailsActivity.class);
+                    String.valueOf(intent.putExtra("usrID",String.valueOf(user.getUsrID())));
+                    String.valueOf(intent.putExtra("usrName",String.valueOf(user.usrName)));
+                    String.valueOf(intent.putExtra("usrDevices",String.valueOf(user.deviceCodes)));
+                    Log.d("User ID",String.valueOf(user.getUsrID()));
+                    Log.d("Position",String.valueOf(position));
+                    context.startActivity(intent);
+                }
+            });
             holder.viewDevice.setText(user.getDeviceCodes().toString());
             holder.viewUser.setText(user.getUsrName());
+
         }
         catch (Exception e){
             Log.d("firebase", String.valueOf(e));
@@ -59,12 +75,14 @@ public class UserList_Adaptor extends RecyclerView.Adapter<UserList_Adaptor.User
 
         TextView viewUser;
         TextView viewDevice;
+        View viewUserParent;
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
 
             viewUser = itemView.findViewById(R.id.userList_usrName);
             viewDevice = itemView.findViewById(R.id.userList_devicelist);
+            viewUserParent = itemView.findViewById(R.id.userList_ParentLayout);
 
         }
 
