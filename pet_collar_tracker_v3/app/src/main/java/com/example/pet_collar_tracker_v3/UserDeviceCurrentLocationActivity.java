@@ -36,6 +36,8 @@ public class UserDeviceCurrentLocationActivity extends FragmentActivity implemen
 
     int[] pointerColors = new int[]{72, 144, 216, 288, 359};
 
+    DatabaseReference pingRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -54,7 +56,12 @@ public class UserDeviceCurrentLocationActivity extends FragmentActivity implemen
 
         TextView liveLocationTextView = (TextView) findViewById(R.id.liveLocationTextView);
 
+        pingRef = FirebaseDatabase.getInstance().getReference().child("liveLocation").child("Dev0").child("ping");
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("liveLocation");
+
+        pingRef.push().setValue(new Random().nextInt(100));
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

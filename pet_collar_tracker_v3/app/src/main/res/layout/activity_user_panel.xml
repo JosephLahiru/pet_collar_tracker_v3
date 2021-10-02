@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserPanelActivity">
+    tools:context=".UserPanelActivity"
+    android:background="@mipmap/dog1"
+    >
 
     <TextView
         android:id="@+id/userPanelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USER PANEL"
+        android:text="WELCOME USER"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="35sp"
         android:layout_marginTop="40dp"
+        android:textColor="#696969"
         />
 
     <Button
@@ -27,7 +30,8 @@
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userPanelTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/userPanelTextView"
+        />
 
     <Button
         android:id="@+id/deviceCurrentLocationButton"
@@ -38,7 +42,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deviceLocationHistoryButton" />
+        app:layout_constraintTop_toBottomOf="@+id/deviceLocationHistoryButton"
+        />
 
     <TextView
         android:id="@+id/currentUserTextView"
@@ -49,6 +54,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userPanelTextView"
+        android:textSize="20sp"
+        android:textColor="#696969"
+        />
+
+    <Button
+        android:id="@+id/complaintFormButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMPLAINT\nFORM"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deviceCurrentLocationButton"
+        android:layout_marginTop="50dp"
         android:textSize="20sp"
         />
 
