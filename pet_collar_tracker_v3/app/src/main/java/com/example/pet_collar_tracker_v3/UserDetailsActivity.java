@@ -2,13 +2,17 @@ package com.example.pet_collar_tracker_v3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,23 +22,36 @@ import java.util.Objects;
 public class UserDetailsActivity extends AppCompatActivity {
 
     TextView usrName,usrEmail,usrDeviceCode;
-    Button editDetails;
-    ArrayList<UserList> userDetaillist;
+    Button editDetails,deleteUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
 
+
         usrName = findViewById(R.id.usrDetails_usrName);
         usrEmail = findViewById(R.id.usrDetails_email);
         usrDeviceCode = findViewById(R.id.usrDetails_deviceCode);
         editDetails = findViewById(R.id.usrDetails_EditBtn);
+        deleteUser = findViewById(R.id.usrDetails_DeleteBtn);
 
         Intent intent  = getIntent();
         String uID = intent.getStringExtra("usrID");
         String uName = intent.getStringExtra("usrName");
         String uDeviceCodes = intent.getStringExtra("usrDevices");
+        String uEmail = null;
+
+
+
+
+
+//        try {
+//          uEmail =   FirebaseAuth.getInstance().getUser(uID).getEmail();
+//        } catch (FirebaseAuthException e) {
+//            e.printStackTrace();
+//        }
 
 //        admin.auth().getUser(uid);
 //        String currentUser = FirebaseAuth.getInstance().getUid();
@@ -42,9 +59,30 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         usrName.setText(uName);
         usrDeviceCode.setText(uDeviceCodes);
+        usrEmail.setText(uEmail);
 
-//        usrName.setText(user.usrName);
-//        usrEmail.setText();
+        deleteUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                try {
+//                    FirebaseAuth.getInstance().deleteUser(uID);
+//                } catch (FirebaseAuthException e) {
+//                    e.printStackTrace();
+//                }
+            }
+        });
+
+        editDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserDetailsActivity.this,UserDetailsEditActivity.class);
+                String.valueOf(intent.putExtra("usrID",uID));
+                String.valueOf(intent.putExtra("usrName",uName));
+                String.valueOf(intent.putExtra("usrDevices",uDeviceCodes));
+                startActivity(intent);
+
+            }
+        });
 
     }
 }
