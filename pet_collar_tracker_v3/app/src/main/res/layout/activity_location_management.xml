@@ -8,27 +8,29 @@
 
     <Button
         android:id="@+id/deviceLiveLocationsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DEVICE\nLIVE\nLOCATIONS"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/custom_button1"
+        android:text="DEVICE\nLIVE LOCATIONS"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="250dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
         />
 
     <Button
         android:id="@+id/deviceHistoryLocationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DEVICE\nLOCATION\nHISTORY"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/custom_button1"
+        android:text="DEVICE\nLOCATION HISTORY"
         app:layout_constraintTop_toBottomOf="@id/deviceLiveLocationsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="328dp"
         android:layout_marginTop="10dp"
-        android:textSize="25sp"
+        android:textSize="20sp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

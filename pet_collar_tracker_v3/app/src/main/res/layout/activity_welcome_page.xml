@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/ss"
     tools:context=".WelcomePageActivity">
+
 
 
 
@@ -19,6 +21,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="80dp"
+        android:background="@drawable/custom_button"
+
         />
 
     <Button
@@ -30,21 +34,22 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="80dp"
+        android:background="@drawable/custom_button"
         />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60sp"
         android:text="@string/a_healthy_pet_is_a_happy_pet_nwith_location_and_activity_tracking_n_these_wearable_trackers_and_collars_can_help_make_sure_n_your_dog_or_cat_is_both_safe_and_healthy_nfind_out_which_one_is_right_for_your_furry_companion"
         android:textAlignment="center"
         android:textSize="25sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"
+        android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="60sp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -54,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/b"
+        app:srcCompat="@mipmap/logo1"
         android:layout_marginTop="40dp"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

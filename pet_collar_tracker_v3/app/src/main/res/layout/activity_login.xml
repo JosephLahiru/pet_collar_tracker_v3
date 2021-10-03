@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="@mipmap/dog1"
+    android:background="@mipmap/nature"
     >
 
 
@@ -19,9 +19,10 @@
             android:id="@+id/imageView"
             android:layout_width="161dp"
             android:layout_height="178dp"
+            android:layout_marginBottom="200dp"
             app:layout_constraintBottom_toTopOf="@+id/textView"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/b" />
+            app:srcCompat="@mipmap/logo1" />
 
         <EditText
             android:id="@+id/login_email"
@@ -34,6 +35,7 @@
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray" />
+
 
         <EditText
             android:id="@+id/login_password"
@@ -53,6 +55,7 @@
             android:layout_width="156dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:background="@drawable/custom_button"
             android:text="Login" />
 
         <Button
