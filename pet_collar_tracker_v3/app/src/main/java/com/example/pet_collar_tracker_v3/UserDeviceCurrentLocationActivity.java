@@ -68,8 +68,6 @@ public class UserDeviceCurrentLocationActivity extends FragmentActivity implemen
                 try {
                     mMap.clear();
 
-                    int i=0; //TODO Change the i with logged in user's Device ID
-
                     String latitude = dataSnapshot.child(devID).child("latitude").getValue().toString();
                     String longitude = dataSnapshot.child(devID).child("longitude").getValue().toString();
 

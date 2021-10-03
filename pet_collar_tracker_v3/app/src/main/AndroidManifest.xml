@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pet_collar_tracker_v3" >
+    package="com.example.pet_collar_tracker_v3">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -18,8 +18,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-<!--        android:theme="@style/Theme.Pet_collar_tracker_v3" >-->
-
+        <activity
+            android:name=".UserDeviceLocationHistoryMapActivity"
+            android:exported="true" />
+        <!-- android:theme="@style/Theme.Pet_collar_tracker_v3" > -->
         <activity
             android:name=".ComplaintFormActivity"
             android:exported="true" />
@@ -71,7 +73,7 @@
 
         <activity
             android:name=".WelcomePageActivity"
-            android:label="Pet Collar Tracker" >
+            android:label="Pet Collar Tracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -29,11 +29,20 @@ public class UserDeviceLocationHistoryActivity extends FragmentActivity {
 
         TableLayout tl = (TableLayout) findViewById(R.id.tableLayout4);
         TextView pastDataTxt = (TextView) findViewById(R.id.retrieveUserDataTextView);
+        Button viewOnMapButton = (Button) findViewById(R.id.viewOnMapButton);
 
         Intent intent  = getIntent();
         String devID = intent.getStringExtra("deviceCodes");
 
         int deviceId = Integer.parseInt(devID.split("v")[1]);
+
+        viewOnMapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewOnMapIntent = new Intent(UserDeviceLocationHistoryActivity.this, UserDeviceLocationHistoryMapActivity.class);
+                startActivity(viewOnMapIntent);
+            }
+        });
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Location");
         databaseReference.addValueEventListener(new ValueEventListener() {
