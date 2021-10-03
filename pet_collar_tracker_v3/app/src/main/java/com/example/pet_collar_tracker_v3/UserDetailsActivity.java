@@ -37,9 +37,11 @@ public class UserDetailsActivity extends AppCompatActivity {
         String uDeviceCodes = intent.getStringExtra("usrDevices");
 
 //        admin.auth().getUser(uid);
-        String currentUser = FirebaseAuth.getInstance().getUid();
-        Log.d("CurrentUser",currentUser);
+//        String currentUser = FirebaseAuth.getInstance().getUid();
+//        Log.d("CurrentUser",currentUser);
 
+        usrName.setText(uName);
+        usrDeviceCode.setText(uDeviceCodes);
 
 //        usrName.setText(user.usrName);
 //        usrEmail.setText();
