@@ -48,7 +48,8 @@ public class UserManagement extends AppCompatActivity {
                     String usrID = dataSnapshot.getKey();
                     userList.setUsrID(usrID);
                     Log.d("firebase", String.valueOf(Objects.requireNonNull(usrID)));
-                    if (userList.getUsrType().equals("admin")){
+
+                    if (userList.getUsrType().equals("admin") || userList.getUsrType().equals("Deleted")){
                         Log.d("firebase", String.valueOf(Objects.requireNonNull(dataSnapshot.getValue())));
                     }
                     else {
