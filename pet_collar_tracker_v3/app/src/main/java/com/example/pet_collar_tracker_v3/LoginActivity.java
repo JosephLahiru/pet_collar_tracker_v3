@@ -78,7 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                                                 startActivity(new Intent(LoginActivity.this, AdminPanel.class));
                                             }else if(String.valueOf(task.getResult().getValue()).equals("Deleted")){
 
+                                                String uID = mAuth.getCurrentUser().getUid();
+                                                mDb.child("Users").child(uID).removeValue();
                                                 mAuth.getCurrentUser().delete();
+
 
                                                 AlertDialog.Builder usrDeletedDialog = new AlertDialog.Builder(LoginActivity.this)
                                                         .setTitle("User Deleted")
@@ -91,6 +94,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                                     }
                                                 });
+
+                                                AlertDialog alertDialog = usrDeletedDialog.create();
+                                                alertDialog.show();
                                             }
                                             else{
                                                 Intent userPanelIntent = new Intent(LoginActivity.this, UserPanelActivity.class);

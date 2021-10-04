@@ -33,7 +33,6 @@ import java.util.Objects;
 public class UserDetailsActivity extends AppCompatActivity {
 
     TextView usrName,usrEmail,usrDeviceCode;
-    Button editDetails;
     ArrayList<UserList> userDetaillist;
     Button editDetails,deleteUser;
 
@@ -54,6 +53,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         String uID = intent.getStringExtra("usrID");
         String uName = intent.getStringExtra("usrName");
         String uDeviceCodes = intent.getStringExtra("usrDevices");
+        String uEmail = intent.getStringExtra("usrEmail");
 
 //        admin.auth().getUser(uid);
         String currentUser = FirebaseAuth.getInstance().getUid();
@@ -62,7 +62,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
 //        usrName.setText(user.usrName);
 //        usrEmail.setText();
-        String uEmail = null;
+
 
 
 
@@ -79,7 +79,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                 dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        FirebaseDatabase.getInstance().getReference("Users").child("usrType").setValue("Deleted");
+                        FirebaseDatabase.getInstance().getReference("Users").child(uID).child("usrType").setValue("Deleted");
                         Toast.makeText(UserDetailsActivity.this, "User Deleted.", Toast.LENGTH_SHORT).show();
 
                     }
@@ -88,8 +88,14 @@ public class UserDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.dismiss();
+                        Toast.makeText(UserDetailsActivity.this, "Cancelled.", Toast.LENGTH_SHORT).show();
+
                     }
                 });
+
+
+                AlertDialog alertDialog = dialog.create();
+                alertDialog.show();
 
             }
         });
