@@ -40,6 +40,7 @@ public class UserDeviceLocationHistoryActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
                 Intent viewOnMapIntent = new Intent(UserDeviceLocationHistoryActivity.this, UserDeviceLocationHistoryMapActivity.class);
+                viewOnMapIntent.putExtra("deviceCodes", devID);
                 startActivity(viewOnMapIntent);
             }
         });
