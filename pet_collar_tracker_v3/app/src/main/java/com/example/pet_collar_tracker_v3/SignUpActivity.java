@@ -80,6 +80,9 @@ public class SignUpActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
                             }
+
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child("Devices").setValue(device_code);
                         }
                     });
 
