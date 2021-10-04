@@ -5,29 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserPanelActivity"
-    android:background="@mipmap/dog1"
+
     >
 
     <TextView
         android:id="@+id/userPanelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WELCOME USER"
+        android:text="Welcome User"
+        android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="35sp"
+        android:textSize="55sp"
         android:layout_marginTop="40dp"
         android:textColor="#696969"
         />
 
     <Button
         android:id="@+id/deviceLocationHistoryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
         android:layout_marginTop="175dp"
-        android:text="DEVICE\nLOCATION\nHISTORY"
-        android:textSize="25sp"
+        android:background="@drawable/custom_button1"
+        android:text="DEVICE\nLOCATION HISTORY"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userPanelTextView"
@@ -35,12 +37,13 @@
 
     <Button
         android:id="@+id/deviceCurrentLocationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/custom_button1"
         android:layout_marginTop="50dp"
-        android:text="DEVICE\nCURRENT\nLOCATION"
+        android:text="DEVICE\nCURRENT LOCATION"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deviceLocationHistoryButton"
         />
@@ -60,8 +63,9 @@
 
     <Button
         android:id="@+id/complaintFormButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="90dp"
+        android:background="@drawable/custom_button1"
         android:text="COMPLAINT\nFORM"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

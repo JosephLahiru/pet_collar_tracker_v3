@@ -10,12 +10,13 @@
         android:id="@+id/retrieveUserDataTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="RETRIEVE PAST DATA"
+        android:text="Retrive Past Data"
+        android:fontFamily="cursive"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="30sp"
+        android:textSize="55sp"
         android:layout_marginTop="10dp"
         />
 
