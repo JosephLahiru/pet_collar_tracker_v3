@@ -1,14 +1,18 @@
 package com.example.pet_collar_tracker_v3;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +27,8 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     TextView usrName,usrEmail,usrDeviceCode;
     Button editDetails,deleteUser;
+
+
 
 
     @Override
@@ -45,18 +51,6 @@ public class UserDetailsActivity extends AppCompatActivity {
 
 
 
-
-
-//        try {
-//          uEmail =   FirebaseAuth.getInstance().getUser(uID).getEmail();
-//        } catch (FirebaseAuthException e) {
-//            e.printStackTrace();
-//        }
-
-//        admin.auth().getUser(uid);
-//        String currentUser = FirebaseAuth.getInstance().getUid();
-//        Log.d("CurrentUser",currentUser);
-
         usrName.setText(uName);
         usrDeviceCode.setText(uDeviceCodes);
         usrEmail.setText(uEmail);
@@ -64,11 +58,24 @@ public class UserDetailsActivity extends AppCompatActivity {
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                try {
-//                    FirebaseAuth.getInstance().deleteUser(uID);
-//                } catch (FirebaseAuthException e) {
-//                    e.printStackTrace();
-//                }
+                AlertDialog.Builder dialog = new AlertDialog.Builder(UserDetailsActivity.this)
+                        .setTitle("Are you Sure?")
+                        .setMessage("Deleting user account will result completely removing user account from the system and result cannot be undone!");
+                dialog.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        FirebaseDatabase.getInstance().getReference("Users").child("usrType").setValue("Deleted");
+                        Toast.makeText(UserDetailsActivity.this, "User Deleted.", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
             }
         });
 

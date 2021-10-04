@@ -1,9 +1,11 @@
 package com.example.pet_collar_tracker_v3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DownloadManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,6 +76,21 @@ public class LoginActivity extends AppCompatActivity {
 
                                             if(String.valueOf(task.getResult().getValue()).equals("admin")) {
                                                 startActivity(new Intent(LoginActivity.this, AdminPanel.class));
+                                            }else if(String.valueOf(task.getResult().getValue()).equals("Deleted")){
+
+                                                mAuth.getCurrentUser().delete();
+
+                                                AlertDialog.Builder usrDeletedDialog = new AlertDialog.Builder(LoginActivity.this)
+                                                        .setTitle("User Deleted")
+                                                        .setMessage("Your user Account is Deleted. Please contact tech support!");
+                                                usrDeletedDialog.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                                                        dialogInterface.dismiss();
+
+                                                    }
+                                                });
                                             }
                                             else{
                                                 Intent userPanelIntent = new Intent(LoginActivity.this, UserPanelActivity.class);
