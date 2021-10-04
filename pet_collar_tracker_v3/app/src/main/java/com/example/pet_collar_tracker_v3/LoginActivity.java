@@ -144,5 +144,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+
+        forgotPwd_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,ResetPwdActivity.class));
+
+            }
+        });
     }
 }
