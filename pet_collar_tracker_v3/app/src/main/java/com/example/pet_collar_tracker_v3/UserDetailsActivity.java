@@ -33,10 +33,8 @@ import java.util.Objects;
 public class UserDetailsActivity extends AppCompatActivity {
 
     TextView usrName,usrEmail,usrDeviceCode;
-    Button editDetails;
-    ArrayList<UserList> userDetaillist;
+    ArrayList<UserList> userDetailList;
     Button editDetails,deleteUser;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
