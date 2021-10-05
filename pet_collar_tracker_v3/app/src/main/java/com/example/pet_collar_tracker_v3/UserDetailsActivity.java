@@ -65,7 +65,6 @@ public class UserDetailsActivity extends AppCompatActivity {
 
 
 
-
         usrName.setText(uName);
         usrDeviceCode.setText(uDeviceCodes);
         usrEmail.setText(uEmail);

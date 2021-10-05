@@ -14,9 +14,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    long count;
 
     private FirebaseAuth mAuth;
 
@@ -81,8 +87,24 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
                             }
 
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child("Devices").setValue(device_code);
+                            DatabaseReference DeviceDb = FirebaseDatabase.getInstance().getReference("Devices");
+
+
+                            DeviceDb.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    count = snapshot.getChildrenCount();
+                                }
+
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            DeviceDb.child(String.valueOf(count+1)).setValue(device_code);
+
+
                         }
                     });
 
