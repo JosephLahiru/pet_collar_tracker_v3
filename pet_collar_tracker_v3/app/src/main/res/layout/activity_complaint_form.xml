@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ComplaintFormActivity"
-    android:background="@mipmap/background_d"
+    android:background="@mipmap/backdrop3"
     >
 
     <TextView
@@ -13,10 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/complaint_form"
+       android:fontFamily="cursive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="35sp"
+        android:textSize="40sp"
         android:layout_marginTop="40dp"
         android:textColor="@color/white"
         />
@@ -99,7 +100,7 @@
 
     <Button
         android:id="@+id/submitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="SUBMIT"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,6 +108,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextIssue"
         android:layout_marginTop="80dp"
         android:textSize="20sp"
+        android:background="@drawable/custom_button"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

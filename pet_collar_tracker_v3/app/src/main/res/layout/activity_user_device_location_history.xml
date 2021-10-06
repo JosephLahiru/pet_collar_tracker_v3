@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/backdrop3"
     tools:context=".UserDeviceLocationHistoryActivity">
 
     <TextView
@@ -16,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="55sp"
+        android:textSize="40sp"
         android:layout_marginTop="10dp"
         />
 
@@ -64,13 +65,13 @@
 
     <Button
         android:id="@+id/viewOnMapButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:text="VIEW ON MAP"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="10dp"
-        />
+        android:background="@drawable/custom_button"
+        android:layout_marginBottom="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
