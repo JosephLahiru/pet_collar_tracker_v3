@@ -49,8 +49,9 @@ public class UserList_Adaptor extends RecyclerView.Adapter<UserList_Adaptor.User
                     String.valueOf(intent.putExtra("usrID",String.valueOf(user.getUsrID())));
                     String.valueOf(intent.putExtra("usrName",String.valueOf(user.usrName)));
                     String.valueOf(intent.putExtra("usrDevices",String.valueOf(user.deviceCodes)));
+                    String.valueOf(intent.putExtra("usrEmail",String.valueOf(user.usrEmail)));
                     Log.d("User ID",String.valueOf(user.getUsrID()));
-                    Log.d("Position",String.valueOf(position));
+                    Log.d("Position", String.valueOf(position));
                     context.startActivity(intent);
                 }
             });

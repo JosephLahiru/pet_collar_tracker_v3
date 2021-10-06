@@ -9,13 +9,10 @@ public class UserList {
     List <String> deviceCodes;
     String usrType;
     String usrID;
+    String usrEmail;
 
-    public void setUsrID(String usrID) {
-        this.usrID = usrID;
-    }
-
-    public String getUsrID() {
-        return usrID;
+    public String getUsrEmail() {
+        return usrEmail;
     }
 
     public String getUsrType() {
@@ -28,5 +25,25 @@ public class UserList {
 
     public String getUsrName() {
         return usrName;
+    }
+
+    public String getUsrID() {
+        return usrID;
+    }
+
+    public void setUsrID(String usrID) {
+        this.usrID = usrID;
+    }
+
+    public void setUsrName(String usrName) {
+        this.usrName = usrName;
+    }
+
+    public void setDeviceCodes(List<String> deviceCodes) {
+        this.deviceCodes = deviceCodes;
+    }
+
+    public void setUsrType(String usrType) {
+        this.usrType = usrType;
     }
 }

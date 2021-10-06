@@ -11,6 +11,8 @@
 int previous_key = 0;
 bool json_pharse_failed = false;
 
+int del = 0;
+
 void setup() {
   Serial.begin(9600);
 
@@ -68,7 +70,7 @@ void loop() {
   String longitude = root["lat"];
   String date_time = root["time"];
 
-  int dev_id = id-1;
+  int dev_id = id - 1;
 
   if (key != previous_key && !json_pharse_failed) {
 
@@ -76,10 +78,15 @@ void loop() {
 
     Serial.println("id = " + String(id) + ", latitude = " + latitude + ", longitude = " + longitude + ", date_time = " + date_time);
 
-    String latitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/latitude", latitude);
-    String longitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/longitude", longitude);
-    String date_time_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/time", date_time);
+    if (del > 720) {
 
+      String latitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/latitude", latitude);
+      String longitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/longitude", longitude);
+      String date_time_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/time", date_time);
+
+      del = 0;
+    }
+    
     Firebase.setString("liveLocation/Dev" + String(dev_id) + "/latitude", latitude);
     Firebase.setString("liveLocation/Dev" + String(dev_id) + "/longitude", longitude);
     Firebase.setString("liveLocation/Dev" + String(dev_id) + "/time", date_time);
@@ -95,4 +102,5 @@ void loop() {
   }
 
   delay(5000);
+  del++;
 }

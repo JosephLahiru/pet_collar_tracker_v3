@@ -27,17 +27,16 @@ public class DeviceManagementActivity extends AppCompatActivity {
 
         TableLayout tl = (TableLayout)findViewById(R.id.tableLayout2);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("UserData");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Devices");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 try{
-                    String databaseDevicesString = snapshot.child("Devices").getValue().toString().substring(1, snapshot.child("Devices").getValue().toString().length() - 1);
-                    String databaseUsersString = snapshot.child("Users").getValue().toString().substring(1, snapshot.child("Users").getValue().toString().length() - 1);
+                    String databaseDevicesString = snapshot.getValue().toString().substring(1, snapshot.getValue().toString().length() - 1);
+
+                    //Toast.makeText(DeviceManagementActivity.this, databaseDevicesString, Toast.LENGTH_SHORT).show();
 
                     String[] Devices = databaseDevicesString.split(", ");
-
-                    String[] Users = databaseUsersString.split(", ");
 
                     TextView[] textArray = new TextView[Devices.length];
                     TableRow[] tr_head = new TableRow[Devices.length];
@@ -45,10 +44,9 @@ public class DeviceManagementActivity extends AppCompatActivity {
                     cleanTable(tl);
 
                     for(int i=0; i<Devices.length; i++){
-                        String curr_dev = Devices[i];
-                        String curr_user = Users[i];
+                        String curr_dev = Devices[i].split("=")[0];
 
-                        String[] data = new String[]{curr_user, curr_dev};
+                        String[] data = new String[]{curr_dev};
 
                         tr_head[i] = new TableRow(DeviceManagementActivity.this);
                         tr_head[i].setId(i+1);
@@ -59,10 +57,12 @@ public class DeviceManagementActivity extends AppCompatActivity {
 
                         for(int h = 0; h < data.length; h++) {
                             textArray[h] = new TextView(DeviceManagementActivity.this);
-                            textArray[h].setTextSize(20);
+                            textArray[h].setTextSize(30);
                             textArray[h].setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
                             textArray[h].setId(i + 111 + h);
                             textArray[h].setText(data[h]);
+//                            textArray[h].setGravity(View.TEXT_ALIGNMENT_CENTER);
+                            textArray[h].setWidth(1070);
                             tr_head[i].addView(textArray[h]);
                         }
 

@@ -14,9 +14,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    long count;
 
     private FirebaseAuth mAuth;
 
@@ -59,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()){
-                                user user = new user(usrName, device_code,"user");
+                                user user = new user(usrName, device_code,"user",email);
 
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -80,6 +86,25 @@ public class SignUpActivity extends AppCompatActivity {
                             else{
                                 Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
                             }
+
+                            DatabaseReference DeviceDb = FirebaseDatabase.getInstance().getReference("Devices");
+
+
+                            DeviceDb.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    count = snapshot.getChildrenCount();
+                                }
+
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            DeviceDb.child(String.valueOf(count+1)).setValue(device_code);
+
+
                         }
                     });
 

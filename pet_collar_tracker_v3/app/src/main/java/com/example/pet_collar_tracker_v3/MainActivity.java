@@ -7,7 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class MainActivity<options> extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +48,8 @@ public class MainActivity extends AppCompatActivity {
         Intent pastLocationsIntent = new Intent(this, PastLocationsActivity.class);
         startActivity(pastLocationsIntent);
     }
+
+
+
 
 }
