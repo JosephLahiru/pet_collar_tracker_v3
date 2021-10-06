@@ -12,6 +12,7 @@
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_login.xml" value="0.359375" />
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_maps.xml" value="0.38697916666666665" />
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_past_locations_table.xml" value="0.38697916666666665" />
+        <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.31574074074074077" />
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_device_current_location.xml" value="0.38697916666666665" />
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_device_location_history.xml" value="0.38697916666666665" />
         <entry key="..\:/Projects/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_panel.xml" value="0.38697916666666665" />
@@ -30,41 +31,12 @@
         <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.22" />
         <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details_edit.xml" value="0.1" />
         <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_management.xml" value="0.22" />
-
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.25" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details_edit.xml" value="0.1875" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_management.xml" value="0.1" />
         <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_panel.xml" value="0.18297101449275363" />
         <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/user_list_user.xml" value="0.25" />
-
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2037037037037037" />
+        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable/custom_button.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable/custom_button1.xml" value="0.2037037037037037" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable/custom_buttons.xml" value="0.2037037037037037" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_admin_panel.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_complaint_form.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_device_management.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_history_location.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_location_management.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_main.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_maps.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_past_locations.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_past_locations_table.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_sign_up.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details_edit.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_device_current_location.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_device_location_history.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_management.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_panel.xml" value="0.1671195652173913" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_welcome_page.xml" value="0.33" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/user_list_user.xml" value="0.1671195652173913" />
-
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.22" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details_edit.xml" value="0.1" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_management.xml" value="0.22" />
-        <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_admin_panel.xml" value="0.22" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_complaint_form.xml" value="0.22" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_device_management.xml" value="0.1" />
@@ -86,11 +58,6 @@
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_panel.xml" value="0.18" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_welcome_page.xml" value="0.1" />
         <entry key="..\:/Users/Washini Gunasena/Documents/GitHub/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/user_list_user.xml" value="0.15217391304347827" />
-
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details.xml" value="0.22" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_details_edit.xml" value="0.1" />
-        <entry key="..\:/RRL/Friends' Works/Pasindu Vijayamuni/Pet Coller/pet_collar_tracker_v3/pet_collar_tracker_v3/app/src/main/res/layout/activity_user_management.xml" value="0.22" />
-
       </map>
     </option>
   </component>

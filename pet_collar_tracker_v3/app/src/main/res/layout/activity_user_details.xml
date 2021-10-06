@@ -95,20 +95,20 @@
     <Button
         android:id="@+id/usrDetails_EditBtn"
         android:layout_width="250dp"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/usrDetails"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/custom_button"
         android:text="Edit User Details" />
 
     <Button
         android:id="@+id/usrDetails_DeleteBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/usrDetails_EditBtn"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_button"
-        android:layout_centerHorizontal="true"
         android:text="Delete User" />
 </RelativeLayout>
