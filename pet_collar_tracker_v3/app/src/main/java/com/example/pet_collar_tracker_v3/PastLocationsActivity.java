@@ -33,6 +33,7 @@ import java.util.Arrays;
 public class PastLocationsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,9 @@ public class PastLocationsActivity extends FragmentActivity implements OnMapRead
                     }
 
                 } catch (Exception e) {
-                    Toast.makeText(PastLocationsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    if(DEBUG) {
+                        Toast.makeText(PastLocationsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

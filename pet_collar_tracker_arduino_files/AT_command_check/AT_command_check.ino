@@ -1,6 +1,6 @@
 #include<SoftwareSerial.h>
 
-SoftwareSerial myserial(2, 3);
+SoftwareSerial myserial(4, 5);
 
 void setup() {
   // put your setup code here, to run once:
