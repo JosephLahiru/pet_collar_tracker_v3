@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class UserPanelActivity extends AppCompatActivity {
 
+    String devID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +25,11 @@ public class UserPanelActivity extends AppCompatActivity {
 
         Intent intent  = getIntent();
         String uName = intent.getStringExtra("userName");
-        String devID = intent.getStringExtra("deviceCodes");
+        devID = intent.getStringExtra("deviceCodes");
 
         Toast.makeText(UserPanelActivity.this, devID + " selected.", Toast.LENGTH_SHORT).show();
 
-        currentUserTextView.setText("Currently logged as " + uName); //TODO get the user list and show user name
+        currentUserTextView.setText("Currently logged as " + uName); //TODO get the user list and show user name - Done
 
         userDeviceLocationHistoryBtn.setOnClickListener(new View.OnClickListener() {
             @Override

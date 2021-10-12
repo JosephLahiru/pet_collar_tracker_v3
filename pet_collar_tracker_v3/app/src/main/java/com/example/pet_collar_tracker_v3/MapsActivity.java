@@ -31,10 +31,9 @@ import java.util.Random;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    boolean DEBUG = false;
 
     int[] pointerColors = new int[]{72, 144, 216, 288, 359};
-
-    DatabaseReference pingRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +46,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        pingRef = FirebaseDatabase.getInstance().getReference().child("liveLocation").child("Dev0").child("ping");
-
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("liveLocation");
-        pingRef.push().setValue(new Random().nextInt(100));
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -61,8 +57,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     mMap.clear();
 
                     for(int i=0; i<dataSnapshot.getChildrenCount(); i++){
-                        String latitude = dataSnapshot.child("Dev"+i).child("latitude").getValue().toString();
-                        String longitude = dataSnapshot.child("Dev"+i).child("longitude").getValue().toString();
+                        String latitude = dataSnapshot.child("dev"+i).child("latitude").getValue().toString();
+                        String longitude = dataSnapshot.child("dev"+i).child("longitude").getValue().toString();
 
                         LatLng latLng = new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
 
@@ -74,7 +70,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 } catch (Exception e) {
-                    Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    if(DEBUG) {
+                        Toast.makeText(MapsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 

@@ -34,8 +34,6 @@ public class UserDeviceLocationHistoryActivity extends FragmentActivity {
         Intent intent  = getIntent();
         String devID = intent.getStringExtra("deviceCodes");
 
-        int deviceId = Integer.parseInt(devID.split("v")[1]);
-
         viewOnMapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +48,11 @@ public class UserDeviceLocationHistoryActivity extends FragmentActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 try {
-                    pastDataTxt.setText("RETRIEVE PAST DATA : Dev" + deviceId);
+                    pastDataTxt.setText("RETRIEVE PAST DATA : " + devID);
 
-                    String databaseLatitudeString = dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().length() - 1);
-                    String databaseLongitudeString = dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().length() - 1);
-                    String databaseTimeString = dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().length() - 1);
+                    String databaseLatitudeString = dataSnapshot.child(devID).child("latitude").getValue().toString().substring(1, dataSnapshot.child(devID).child("latitude").getValue().toString().length() - 1);
+                    String databaseLongitudeString = dataSnapshot.child(devID).child("longitude").getValue().toString().substring(1, dataSnapshot.child(devID).child("longitude").getValue().toString().length() - 1);
+                    String databaseTimeString = dataSnapshot.child(devID).child("time").getValue().toString().substring(1, dataSnapshot.child(devID).child("time").getValue().toString().length() - 1);
 
                     String[] stringLat = databaseLatitudeString.split(", ");
                     Arrays.sort(stringLat);

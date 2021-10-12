@@ -17,7 +17,7 @@ boolean waitResponse(String expected_answer = "OK", unsigned int timeout = 2000)
 void sendGpsToServer();
 
 #include <SoftwareSerial.h>
-SoftwareSerial SIM900a(2, 3);
+SoftwareSerial SIM900a(4, 5);
 
 const String APN  = "mobitel";
 const String USER = "";

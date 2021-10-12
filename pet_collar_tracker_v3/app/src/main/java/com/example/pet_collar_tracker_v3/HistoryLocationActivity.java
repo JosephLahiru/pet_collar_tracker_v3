@@ -20,6 +20,8 @@ import java.util.Arrays;
 
 public class HistoryLocationActivity extends FragmentActivity {
 
+    boolean DEBUG = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +54,9 @@ public class HistoryLocationActivity extends FragmentActivity {
                                     //TODO limit input for only numbers - DONE
                                     //Toast.makeText(HistoryLocationActivity.this, Long.toString(dataSnapshot.getChildrenCount()), Toast.LENGTH_SHORT).show();
 
-                                    String databaseLatitudeString = dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("latitude").getValue().toString().length() - 1);
-                                    String databaseLongitudeString = dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("longitude").getValue().toString().length() - 1);
-                                    String databaseTimeString = dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().substring(1, dataSnapshot.child("Dev" + deviceId).child("time").getValue().toString().length() - 1);
+                                    String databaseLatitudeString = dataSnapshot.child("dev" + deviceId).child("latitude").getValue().toString().substring(1, dataSnapshot.child("dev" + deviceId).child("latitude").getValue().toString().length() - 1);
+                                    String databaseLongitudeString = dataSnapshot.child("dev" + deviceId).child("longitude").getValue().toString().substring(1, dataSnapshot.child("dev" + deviceId).child("longitude").getValue().toString().length() - 1);
+                                    String databaseTimeString = dataSnapshot.child("dev" + deviceId).child("time").getValue().toString().substring(1, dataSnapshot.child("dev" + deviceId).child("time").getValue().toString().length() - 1);
 
                                     String[] stringLat = databaseLatitudeString.split(", ");
                                     Arrays.sort(stringLat);
@@ -114,7 +116,9 @@ public class HistoryLocationActivity extends FragmentActivity {
                         }
                     });
                 } catch (Exception e) {
-                    Toast.makeText(HistoryLocationActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    if(DEBUG) {
+                        Toast.makeText(HistoryLocationActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
             @Override

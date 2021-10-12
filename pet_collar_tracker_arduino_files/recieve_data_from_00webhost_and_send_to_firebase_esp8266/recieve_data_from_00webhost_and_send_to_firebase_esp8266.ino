@@ -16,7 +16,6 @@ int del = 0;
 void setup() {
   Serial.begin(9600);
 
-  // connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("connecting");
   while (WiFi.status() != WL_CONNECTED) {
@@ -31,6 +30,7 @@ void setup() {
 }
 
 int n = 0;
+int del = 0;
 
 void loop() {
 
@@ -72,7 +72,7 @@ void loop() {
 
   int dev_id = id - 1;
 
-  if (key != previous_key && !json_pharse_failed) {
+  if (key != previous_key && !json_pharse_failed && dev_id >= 0) {
 
     previous_key = key;
 
@@ -80,25 +80,37 @@ void loop() {
 
     if (del > 720) {
 
-      String latitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/latitude", latitude);
-      String longitude_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/longitude", longitude);
-      String date_time_out = Firebase.pushString("Location/Dev" + String(dev_id) + "/time", date_time);
+      String latitude_out = Firebase.pushString("Location/dev" + String(dev_id) + "/latitude", latitude);
+      String longitude_out = Firebase.pushString("Location/dev" + String(dev_id) + "/longitude", longitude);
+      String date_time_out = Firebase.pushString("Location/dev" + String(dev_id) + "/time", date_time);
 
       del = 0;
     }
-    
-    Firebase.setString("liveLocation/Dev" + String(dev_id) + "/latitude", latitude);
-    Firebase.setString("liveLocation/Dev" + String(dev_id) + "/longitude", longitude);
-    Firebase.setString("liveLocation/Dev" + String(dev_id) + "/time", date_time);
 
-    // handle error
+    Firebase.setString("liveLocation/dev" + String(dev_id) + "/latitude", latitude);
+    Firebase.setString("liveLocation/dev" + String(dev_id) + "/longitude", longitude);
+    Firebase.setString("liveLocation/dev" + String(dev_id) + "/time", date_time);
+
+    Serial.println(dev_id);
+
     if (Firebase.failed()) {
-      Serial.print("pushing /logs failed:");
+      Serial.print("pushing /data failed:");
       Serial.println(Firebase.error());
       return;
     }
-    Serial.print("pushed: /logs/");
-    delay(1000);
+    Serial.print("pushed: /data/");
+  }
+
+  if (dev_id >= 0) {
+    Firebase.setString("liveLocation/dev" + String(dev_id) + "/ping", String(random(0, 1000)));
+    Firebase.setString("Location/dev" + String(dev_id) + "/ping", String(random(0, 1000)));
+
+    if (Firebase.failed()) {
+      Serial.print("pushing /ping failed:");
+      Serial.println(Firebase.error());
+      return;
+    }
+    Serial.print("pushed: /ping/");
   }
 
   delay(5000);

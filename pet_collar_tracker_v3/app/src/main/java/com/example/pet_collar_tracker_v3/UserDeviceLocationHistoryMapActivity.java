@@ -35,8 +35,7 @@ import java.util.Random;
 public class UserDeviceLocationHistoryMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
-    DatabaseReference pingRef;
+    boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,16 +55,9 @@ public class UserDeviceLocationHistoryMapActivity extends FragmentActivity imple
 
         locationHistoryTextView.setText("LOCATION HISTORY : " + devID);
 
-        //Toast.makeText(UserDeviceLocationHistoryMapActivity.this, devID, Toast.LENGTH_SHORT).show();
-
-        //int deviceId = Integer.parseInt(devID.split("v")[1]);
-
-        pingRef = FirebaseDatabase.getInstance().getReference().child("Location").child("Dev0").child("ping");
-
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Location");
-        pingRef.push().setValue(new Random().nextInt(100));
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,7 +101,9 @@ public class UserDeviceLocationHistoryMapActivity extends FragmentActivity imple
                                 .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(359))));
                     }
                 } catch (Exception e) {
-                    Toast.makeText(UserDeviceLocationHistoryMapActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    if(DEBUG) {
+                        Toast.makeText(UserDeviceLocationHistoryMapActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
 
