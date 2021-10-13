@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/live_location"
-        android:fontFamily="cursive"
+        android:fontFamily="sans-serif-black"
         android:layout_marginTop="15dp"
         android:layout_marginStart="95dp"
-        android:textSize="50sp"
+        android:textSize="40sp"
         />
 
 </FrameLayout>

@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="161dp"
@@ -32,7 +33,7 @@
             android:backgroundTint="@color/black"
             android:hint="Username"
             android:inputType="text"
-            android:fontFamily="cursive"
+
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/black"
@@ -49,7 +50,7 @@
             android:backgroundTint="@color/black"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:fontFamily="cursive"
+
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/black"
@@ -65,7 +66,7 @@
             android:autofillHints="Re-enter the password."
             android:backgroundTint="@color/black"
             android:hint="Device Code"
-            android:fontFamily="cursive"
+
             android:inputType="textEmailAddress"
             android:padding="15dp"
             android:textColor="@color/black"
@@ -79,7 +80,7 @@
             android:layout_below="@id/signUp_device_code"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:fontFamily="cursive"
+
             android:autofillHints="Enter a string password."
             android:backgroundTint="@color/black"
             android:hint="Password"
@@ -101,7 +102,7 @@
             android:backgroundTint="@color/black"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:fontFamily="cursive"
+
             android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/black"

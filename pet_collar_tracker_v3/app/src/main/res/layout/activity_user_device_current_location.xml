@@ -19,12 +19,12 @@
         android:id="@+id/liveLocationTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="cursive"
+        android:fontFamily="sans-serif-black"
 
         android:text="@string/live_location"
         android:layout_marginTop="15dp"
         android:layout_marginStart="95dp"
-        android:textSize="50dp"
+        android:textSize="40dp"
         />
 
 </FrameLayout>

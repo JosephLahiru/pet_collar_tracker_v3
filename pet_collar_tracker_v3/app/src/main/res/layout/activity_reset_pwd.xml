@@ -20,17 +20,18 @@
             android:layout_marginTop="60dp"
             android:textColorHint="@color/black"
             android:textColor="@color/black"
-            android:fontFamily="cursive"
+
             />
 
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:id="@+id/reset_Btn"
         android:text="Reset Password"
-        android:textSize="25dp"
+        android:textSize="24dp"
+
         android:layout_below="@id/reset_email"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_button"
