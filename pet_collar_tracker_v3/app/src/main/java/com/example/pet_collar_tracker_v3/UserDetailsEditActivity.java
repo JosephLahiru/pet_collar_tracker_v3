@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class UserDetailsEditActivity extends AppCompatActivity {
 
-    TextView usrName,usrDeviceCode;
+    TextView usrName,usrDeviceCode,usrEmail;
     Button editDetails;
 
     @Override
@@ -25,15 +25,19 @@ public class UserDetailsEditActivity extends AppCompatActivity {
         usrName = (EditText) findViewById(R.id.usrDetailsEdit_usrName);
         usrDeviceCode = (EditText) findViewById(R.id.usrDetailsEdit_deviceCode);
         editDetails = (Button)findViewById(R.id.usrDetailsEdit_UpdateBtn);
+        usrEmail = (TextView) findViewById(R.id.usrDetailsEdit_email); 
 
 
         Intent intent  = getIntent();
         String uID = intent.getStringExtra("usrID");
         String uName = intent.getStringExtra("usrName");
         String uDeviceCodes = intent.getStringExtra("usrDevices");
+        String uEmail = intent.getStringExtra("usrEmail");
 
         usrName.setText(uName);
         usrDeviceCode.setText(uDeviceCodes);
+        usrEmail.setText(uEmail);
+
 
         editDetails.setOnClickListener(new View.OnClickListener() {
             @Override
