@@ -11,7 +11,7 @@
         android:layout_width="205dp"
         android:layout_height="wrap_content"
         android:layout_column="1"
-        android:text="List of Devices"
+        android:text="Devices"
         android:fontFamily="sans-serif-black"
         android:textAlignment="center"
         android:textSize="50sp"
