@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -48,7 +50,8 @@ public class SignUpActivity extends AppCompatActivity {
 
             String usrName = field_usrName.getText().toString();
             String email = this.field_email.getText().toString();
-            String device_code = field_d_code.getText().toString();
+            String device_code = field_d_code.getText().toString().toLowerCase();
+            device_code = device_code.replaceAll("\\s","");
             String pass = field_pwd.getText().toString();
             String confirmPass = field_conPwd.getText().toString();
 
@@ -56,57 +59,62 @@ public class SignUpActivity extends AppCompatActivity {
                 Toast.makeText(SignUpActivity.this, "Please enter values for all fields.", Toast.LENGTH_SHORT).show();
             }
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 Toast.makeText(SignUpActivity.this, "Please enter valid email address.", Toast.LENGTH_SHORT).show();
             }
 
-            mAuth.createUserWithEmailAndPassword(email,pass)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                user user = new user(usrName, device_code,"user",email);
+            else {
 
-                                FirebaseDatabase.getInstance().getReference("Users")
-                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                String finalDevice_code = device_code;
+                mAuth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    user user = new user(usrName, finalDevice_code, "user", email);
+
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(SignUpActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
+                                            } else {
+                                                Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+                                    });
+
+                                } else {
+                                    Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
+                                }
+
+                                DatabaseReference DeviceDb = FirebaseDatabase.getInstance().getReference("Devices");
+
+
+                                DeviceDb.addValueEventListener(new ValueEventListener() {
                                     @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        count = snapshot.getChildrenCount();
+                                    }
 
-                                        if (task.isSuccessful()){
-                                            Toast.makeText(SignUpActivity.this, "User has been registered successfully", Toast.LENGTH_LONG).show();
-                                        }
-                                        else{
-                                            Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
-                                        }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
                                     }
                                 });
+                                
+
+                                DeviceDb.child(String.valueOf(count + 1)).setValue(finalDevice_code);
+
 
                             }
-                            else{
-                                Toast.makeText(SignUpActivity.this, "user registration failed. Try again!", Toast.LENGTH_LONG).show();
-                            }
-
-                            DatabaseReference DeviceDb = FirebaseDatabase.getInstance().getReference("Devices");
-
-
-                            DeviceDb.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    count = snapshot.getChildrenCount();
-                                }
-
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError error) {
-
-                                }
-                            });
-                            DeviceDb.child(String.valueOf(count+1)).setValue(device_code);
-
-
-                        }
-                    });
+                        });
+            }
 
         });
 
